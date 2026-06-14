@@ -621,25 +621,25 @@ View Gallery
 <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=600&auto=format&fit=crop" alt="Cappuccino">
 <div class="menu-content">
 <h3>Gold Espresso</h3>
-<p>Premium dark roast balanced with textured micro-foam milk.</p>
+<p>Premium dark roast balanced with textured micro-foam milk.</p><br><button class="btn btn-primary" onclick="addToOrder('Gold Espresso',199)">Add to Order</button>
 </div>
 </div>
 <div class="menu-card">
 <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=600&auto=format&fit=crop" alt="Cold Brew">
 <div class="menu-content">
 <h3>Velvet Cold Brew</h3>
-<p>18-hour slow-steeped signature blend served ice cold.</p>
+<p>18-hour slow-steeped signature blend served ice cold.</p><br><button class="btn btn-primary" onclick="addToOrder('Velvet Cold Brew',249)">Add to Order</button>
 </div>
 </div>
 <div class="menu-card">
 <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=600&auto=format&fit=crop" alt="Dessert">
 <div class="menu-content">
 <h3>Artisan Soufflé</h3>
-<p>Decadent hot chocolate molten dessert paired with luxury vanilla bean scoop.</p>
+<p>Decadent hot chocolate molten dessert paired with luxury vanilla bean scoop.</p><br><button class="btn btn-primary" onclick="addToOrder('Artisan Soufflé',299)">Add to Order</button>
 </div>
 </div>
 </div>
-</section>
+<center><a class="btn btn-primary" href="javascript:orderOnWhatsApp()">🛒 Place Order on WhatsApp</a></center></section>
 
 <section id="gallery">
 <div class="section-title">
@@ -725,5 +725,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+
+<script>
+let cart=[];
+function addToOrder(item,price){cart.push({item,price});alert(item+" added!");}
+function orderOnWhatsApp(){
+if(cart.length===0){alert("Add items first");return;}
+let msg="☕ *Luxury Brew Cafe Order*%0A%0A";let total=0;
+cart.forEach((i,n)=>{msg+=(n+1)+". "+i.item+" - ₹"+i.price+"%0A";total+=i.price;});
+msg+="%0A💰 Total: ₹"+total;
+window.open("https://wa.me/919493342145?text="+msg,"_blank");
+}
+</script>
 </body>
 </html>
